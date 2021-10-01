@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "641037225604",
+    "project_id": "comokaroomjookacom",
+    "storage_bucket": "comokaroomjookacom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641037225604:android:5f8a4e8603f271f9ca3cd1",
+        "android_client_info": {
+          "package_name": "com.oka.room.jooka.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641037225604-uamfhqleunk0cgsvb3sj8dphqc9247as.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQww0bufr39UP6GN9FZABpq_fBR93l9r8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641037225604-uamfhqleunk0cgsvb3sj8dphqc9247as.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
