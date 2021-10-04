@@ -160,11 +160,10 @@ fun ActivityWebActivity56ji5Binding.setUpWebView56ji5(start56ji5: StartActivityF
                 loadUrl(getLastPage56ji5()!!)
             } else {
                 loadUrl(getFirstPage56ji5() ?: return)
-//                loadUrl("https://dropmefiles.com/")
             }
         }
     }
 }
 
 fun ActivityWebActivity56ji5Binding.checkIfLast56ji5(): Boolean =
-    wv56ji5.canGoBack() || wv56ji5.isFocused
+    wv56ji5.canGoBack() && wv56ji5.isFocused
