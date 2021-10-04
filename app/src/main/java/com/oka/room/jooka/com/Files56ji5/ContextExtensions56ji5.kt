@@ -4,8 +4,11 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.util.Log
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.appsflyer.AppsFlyerConversionListener
 import com.appsflyer.AppsFlyerLib
 import com.google.android.gms.ads.MobileAds
@@ -16,10 +19,7 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.onesignal.OneSignal
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,9 +35,8 @@ fun Context.setUpMobileAds56ji5() {
     MobileAds.initialize(this)
     CoroutineScope(Dispatchers.IO).launch {
         try {
-            gaid56ji5 = AdvertisingIdClient.getAdvertisingIdInfo(this@setUpMobileAds56ji5)?.id.also {
-                Log.d("TEST_GAID", it.toString())
-            }
+            gaid56ji5 =
+                AdvertisingIdClient.getAdvertisingIdInfo(this@setUpMobileAds56ji5)?.id
         } catch (e: Exception) {
 
         }
@@ -48,17 +47,10 @@ fun Context.setUpAppsFlyer56ji5() {
     object : AppsFlyerConversionListener {
         override fun onConversionDataSuccess(map56ji5: MutableMap<String, Any>?) {
             map56ji5?.run {
-                Log.d("TEST_2", toString())
                 status56ji5 = if (getValue(STATUS_TAG_56ji5) == "Organic") {
                     "Organic"
                 } else {
                     "Non-organic"
-                }
-                map {
-                    Log.d(
-                        "TEST_APPS_FLYER",
-                        "KEY: ${it.key}, VALUE: ${it.value}"
-                    )
                 }
 
                 val listOfSubs56ji5 = getValue(CAMPAIGN_TAG_56ji5)
@@ -99,15 +91,15 @@ fun Context.setUpAppsFlyer56ji5() {
     }
 }
 
-fun Context.setupBundle56ji5 ()  {
+fun Context.setupBundle56ji5() {
     bundle56ji5 = packageName
 }
 
 
-fun Context.checkPermissions56ji5 () {
+fun Context.checkPermissions56ji5() {
     Dexter.withContext(this)
         .withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        .withListener(object: MultiplePermissionsListener {
+        .withListener(object : MultiplePermissionsListener {
             override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
             }
 
@@ -119,25 +111,61 @@ fun Context.checkPermissions56ji5 () {
         }).check()
 }
 
-fun Context.getSharedPreference (): SharedPreferences = getSharedPreferences(SHARED_PREFERENCE_TAG_56ji5, Context.MODE_PRIVATE)
+fun Context.getSharedPreference56ji5(): SharedPreferences =
+    getSharedPreferences(SHARED_PREFERENCE_TAG_56ji5, Context.MODE_PRIVATE)
 
-fun AppCompatActivity.startWebViewActivity ()  {
+fun AppCompatActivity.startWebViewActivity56ji5() {
     startActivity(Intent(this, WebActivity56ji5::class.java))
     finish()
 }
 
-fun AppCompatActivity.delayedIntentPush () {
-    CoroutineScope(Dispatchers.Main).launch {
-        delay(5000)
-        startActivity(Intent(this@delayedIntentPush, WebActivity56ji5::class.java))
-        finish()
+fun AppCompatActivity.intentPush56ji5() {
+    startActivity(Intent(this, WebActivity56ji5::class.java))
+    finish()
+}
+
+fun Context.createTempFile56ji5(): File = File.createTempFile(
+    "TMP${
+        SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+    }_56ji5", ".jpg",
+    getExternalFilesDir(android.os.Environment.DIRECTORY_PICTURES)
+)
+
+
+fun Context.checkForConnection56ji5(): Boolean {
+    val connectivityManager56ji5 = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        val networkCapabilities56ji5 = connectivityManager56ji5.getNetworkCapabilities(connectivityManager56ji5.activeNetwork) ?: return false
+        return networkCapabilities56ji5.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+    } else {
+        for (network56ji5 in connectivityManager56ji5.allNetworks) {
+            connectivityManager56ji5.getNetworkInfo(network56ji5)?.let {
+                if (it.isConnected) return true
+            }
+        }
+        return false
     }
 }
 
-fun Context.createTempFile56ji5 () = File.createTempFile(
-    "TMP${
-        SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())}_56ji5", ".jpg",
-        getExternalFilesDir(android.os.Environment.DIRECTORY_PICTURES))
+fun AppCompatActivity.checkConnectionCycle56ji5() {
+    lifecycleScope.launch {
+        while (isActive) {
+            delay(500)
+            if (isDismissed56ji5) {
+                if (!checkForConnection56ji5()) {
+                    InternetChecker56ji5().apply {
+                        show(
+                            supportFragmentManager,
+                            "internet_checker_56ji5"
+                        )
+                    }
+                    isDismissed56ji5 = false
+                }
+            }
+        }
+
+    }
+}
 
 
 

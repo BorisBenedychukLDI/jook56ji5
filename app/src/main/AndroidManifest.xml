@@ -34,6 +34,7 @@
             android:configChanges="fontScale|keyboard|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen|keyboardHidden|locale|navigation|orientation"/>
         <activity
             android:name=".MainActivity56ji5"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
