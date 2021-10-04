@@ -14,7 +14,7 @@
         android:layout_marginBottom="30dp"
         android:background="@drawable/custom_button_56ji5"
         android:foregroundTint="@color/white"
-        android:text="Start"
+        android:text="@string/b_start_56ji5"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -32,6 +32,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/logo_jooka_56ji5"
         app:srcCompat="@drawable/jokaroom_56ji5" />
 
     <ImageView
@@ -41,6 +42,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        android:contentDescription="@string/butterfly_56ji5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_logo_56ji5"
         app:srcCompat="@drawable/bf_56ji5" />

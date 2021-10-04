@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">jook56ji5</string>
+    <string name="app_name">Jookaroom</string>
+    <string name="b_start_56ji5">Start</string>
+    <string name="logo_jooka_56ji5">logo jooka</string>
+    <string name="butterfly_56ji5">butterfly</string>
+    <string name="b_check_56ji5">Check</string>
+    <string name="lost_network_connection_56ji5">Lost Network Connection</string>
+    <string name="butterfly_internet_56ji5">butterfly internet</string>
 </resources>
