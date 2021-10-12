@@ -129,11 +129,11 @@ fun ActivityWebActivity56ji5Binding.setUpWebView56ji5(start56ji5: StartActivityF
                     com.oka.room.jooka.com.filePathCallback56ji5 = filePathCallback56ji5
                     val capture56ji5 = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                     if (capture56ji5.resolveActivity(this.packageManager) != null) {
-                        val file = createTempFile56ji5()
+                        val file56ji5 = createTempFile56ji5()
                         uriView56ji5 = FileProvider.getUriForFile(
                             this,
                             "${bundle56ji5}.provider",
-                            file
+                            file56ji5
                         )
                         capture56ji5.run {
                             putExtra(MediaStore.EXTRA_OUTPUT, uriView56ji5)
