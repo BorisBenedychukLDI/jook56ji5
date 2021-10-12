@@ -54,17 +54,20 @@ fun SharedPreferences.setUpLink56ji5() {
     } else {
         if (status56ji5 == "Non-organic") {
             if (key56ji5.toString().length != 20) {
-                putFirstPage56ji5(Uri.parse(fbBlack56ji5).buildUpon()
-                    .appendQueryParameter(KEY_TAG_56ji5, fbDef56ji5)
-                    .appendQueryParameter(BUNDLE_TAG_56ji5, bundle56ji5)
-                    .appendQueryParameter(SUB4_TAG_56ji5, sub456ji5)
-                    .appendQueryParameter(SUB5_TAG_56ji5, sub556ji5)
-                    .appendQueryParameter(SUB6_TAG_56ji5, sub656ji5)
-                    .appendQueryParameter(SUB7_TAG_56ji5, DEFAULT_TAG_56ji5)
-                    .toString()
-                    .plus("&$SUB10_TAG_56ji5=$uid56ji5||$gaid56ji5||${APPS_FLYER_KEY_CODED_56JI5.decodeBase6456ji5()}"))
+                putFirstPage56ji5(
+                    Uri.parse(fbBlack56ji5).buildUpon()
+                        .appendQueryParameter(KEY_TAG_56ji5, fbDef56ji5)
+                        .appendQueryParameter(BUNDLE_TAG_56ji5, bundle56ji5)
+                        .appendQueryParameter(SUB4_TAG_56ji5, sub456ji5)
+                        .appendQueryParameter(SUB5_TAG_56ji5, sub556ji5)
+                        .appendQueryParameter(SUB6_TAG_56ji5, sub656ji5)
+                        .appendQueryParameter(SUB7_TAG_56ji5, DEFAULT_TAG_56ji5)
+                        .toString()
+                        .plus("&$SUB10_TAG_56ji5=$uid56ji5||$gaid56ji5||${APPS_FLYER_KEY_CODED_56JI5.decodeBase6456ji5()}")
+                )
             } else {
-                putFirstPage56ji5(Uri.parse(fbBlack56ji5).buildUpon()
+                putFirstPage56ji5(
+                    Uri.parse(fbBlack56ji5).buildUpon()
                         .appendQueryParameter(KEY_TAG_56ji5, key56ji5)
                         .appendQueryParameter(BUNDLE_TAG_56ji5, bundle56ji5)
                         .appendQueryParameter(SUB2_TAG_56ji5, sub256ji5)
@@ -74,28 +77,34 @@ fun SharedPreferences.setUpLink56ji5() {
                         .appendQueryParameter(SUB6_TAG_56ji5, sub656ji5)
                         .appendQueryParameter(SUB7_TAG_56ji5, sub756ji5)
                         .toString()
-                        .plus("&$SUB10_TAG_56ji5=$uid56ji5||$gaid56ji5||${APPS_FLYER_KEY_CODED_56JI5.decodeBase6456ji5()}"))
+                        .plus("&$SUB10_TAG_56ji5=$uid56ji5||$gaid56ji5||${APPS_FLYER_KEY_CODED_56JI5.decodeBase6456ji5()}")
+                )
             }
         } else {
-            putFirstPage56ji5(Uri.parse(fbBlack56ji5).buildUpon()
+            putFirstPage56ji5(
+                Uri.parse(fbBlack56ji5).buildUpon()
                     .appendQueryParameter(KEY_TAG_56ji5, fbDef56ji5)
+                    .appendQueryParameter(BUNDLE_TAG_56ji5, bundle56ji5)
                     .appendQueryParameter(SUB7_TAG_56ji5, ORGANIC_TAG_56ji5)
                     .toString()
-                    .plus("&$SUB10_TAG_56ji5=$uid56ji5||$gaid56ji5||${APPS_FLYER_KEY_CODED_56JI5.decodeBase6456ji5()}"))
+                    .plus("&$SUB10_TAG_56ji5=$uid56ji5||$gaid56ji5||${APPS_FLYER_KEY_CODED_56JI5.decodeBase6456ji5()}")
+            )
         }
     }
 }
 
 fun SharedPreferences.getLastPage56ji5() = getString(LAST_PAGE_56ji5, null)
 
-fun SharedPreferences.putLastPage56ji5 (str56ji5 : String?) = edit().putString(LAST_PAGE_56ji5, str56ji5).apply()
+fun SharedPreferences.putLastPage56ji5(str56ji5: String?) =
+    edit().putString(LAST_PAGE_56ji5, str56ji5).apply()
 
-fun SharedPreferences.putFirstPage56ji5 (str56ji5 : String?) = edit().putString(FIRST_PAGE_56ji5, str56ji5).apply()
+fun SharedPreferences.putFirstPage56ji5(str56ji5: String?) =
+    edit().putString(FIRST_PAGE_56ji5, str56ji5).apply()
 
-fun SharedPreferences.getFirstPage56ji5 () = getString(FIRST_PAGE_56ji5, null)
+fun SharedPreferences.getFirstPage56ji5() = getString(FIRST_PAGE_56ji5, null)
 
 
-fun returnFileToWebView (request56ji5: Int, result56ji5: Int, data56ji5: Intent?) {
+fun returnFileToWebView(request56ji5: Int, result56ji5: Int, data56ji5: Intent?) {
     if (request56ji5 == REQUEST_CODE_56ji5) {
         val uriResult56ike33 =
             if (data56ji5 == null || result56ji5 != AppCompatActivity.RESULT_OK) null else data56ji5.data
